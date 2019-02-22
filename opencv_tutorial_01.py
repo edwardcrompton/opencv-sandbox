@@ -9,3 +9,13 @@ image = cv2.imread("images/beech.jpeg")
 (h, w, d) = image.shape
 print("width={}, height={}, depth={}".format(w, h, d))
 
+# access the RGB pixel located at x=50, y=100, keepind in mind that
+# OpenCV stores images in BGR order rather than RGB
+(B, G, R) = image[300, 225]
+print("R={}, G={}, B={}".format(R, G, B))
+
+# convert the image to grayscale
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+edged = cv2.Canny(gray, 145, 150)
+cv2.imwrite("images/edged-beech.jpeg", edged)
+
